@@ -7,6 +7,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'basic_assumption'
+gem 'strong_parameters'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
