@@ -10,4 +10,7 @@ class DocsController < ApplicationController
     redirect_to [:share, doc]
   end
 
+  def show
+  end
+
 end

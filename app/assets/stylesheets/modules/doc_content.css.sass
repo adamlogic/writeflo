@@ -3,16 +3,23 @@
 $doc-content-padding: 15px
 
 .page-content
-  @extend %content-area
+  @extend %page-content-area
 
-.doc-content
-  padding-right: $doc-content-padding * 2 + 2
+%doc-content
+  padding: $doc-content-padding
+  height: 200px
   border: 1px solid gray
+  font-size: 16px
+  line-height: 1.5
+  font-family: helvetica
+
+.editable-doc-content
+  padding-right: $doc-content-padding * 2 + 2
   textarea
+    @extend %doc-content
     width: 100%
-    padding: $doc-content-padding
-    font-size: 16px
-    line-height: 1.5
-    border: none
     resize: none
     outline: none
+
+.reviewable-doc-content
+  @extend %doc-content

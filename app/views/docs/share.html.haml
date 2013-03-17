@@ -2,7 +2,7 @@
   .share-url
     .share-url-label This URL is for you to share
     .share-url-info Send it to friends and family for feedback!
-    = text_field_tag :feedback_url, feedback_doc_url(doc)
+    = text_field_tag :new_review_url, new_review_url(doc, version: 1)
 
   .share-url
     .share-url-label This URL is for you to keep
