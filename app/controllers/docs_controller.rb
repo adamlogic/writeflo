@@ -1,6 +1,6 @@
 class DocsController < ApplicationController
 
-  assume(:doc) { params[:id] ? Doc.find(params[:id]) : Doc.new(doc_params) }
+  assume(:doc) { params[:id] ? Doc.find_by_permalink!(params[:id]) : Doc.new(doc_params) }
 
   def new
   end
