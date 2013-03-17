@@ -1,0 +1,15 @@
+.share-modal
+  .share-url
+    .share-url-label This URL is for you to share
+    .share-url-info Send it to friends and family for feedback!
+    = text_field_tag :feedback_url, feedback_doc_url(doc)
+
+  .share-url
+    .share-url-label This URL is for you to keep
+    .share-url-info
+      Come back to this URL to view your feedback.<br>
+      Worried you'll lose your URL? #{link_to "Create an account now"}!
+    = text_field_tag :doc_url, doc_url(doc)
+
+  .modal-dismiss
+    = link_to 'view your writeflo', doc_path(doc)
