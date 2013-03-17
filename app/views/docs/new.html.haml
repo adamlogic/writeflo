@@ -4,7 +4,7 @@
       .logo writeflo
       .page-actions
         = submit_tag 'share your writeflo'
-        = link_to 'start a new writeflo'
+        = link_to 'start a new writeflo', new_doc_path
 
   .page-content
     .doc-content= f.text_area :content
