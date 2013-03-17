@@ -1,0 +1,10 @@
+= form_for @doc do |f|
+  .page-header
+    .page-header-content
+      .logo writeflo
+      .page-actions
+        = submit_tag 'share your writeflo'
+        = link_to 'start a new writeflo'
+
+  .page-content
+    .doc-content= f.text_area :content

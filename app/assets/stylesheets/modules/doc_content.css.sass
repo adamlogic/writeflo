@@ -1,0 +1,18 @@
+@import 'globals/all'
+
+$doc-content-padding: 15px
+
+.page-content
+  @extend %content-area
+
+.doc-content
+  padding-right: $doc-content-padding * 2 + 2
+  border: 1px solid gray
+  textarea
+    width: 100%
+    padding: $doc-content-padding
+    font-size: 16px
+    line-height: 1.5
+    border: none
+    resize: none
+    outline: none
