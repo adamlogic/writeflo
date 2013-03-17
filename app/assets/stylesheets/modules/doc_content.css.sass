@@ -1,4 +1,5 @@
 @import 'globals/all'
+@import 'bourbon'
 
 $doc-content-padding: 15px
 
@@ -7,7 +8,7 @@ $doc-content-padding: 15px
 
 %doc-content
   padding: $doc-content-padding
-  height: 200px
+  height: 500px
   border: 1px solid gray
   font-size: 16px
   line-height: 1.5
@@ -23,3 +24,7 @@ $doc-content-padding: 15px
 
 .reviewable-doc-content
   @extend %doc-content
+  +user-select(none)
+  overflow: scroll
+  p
+    margin: 0 0 1em
