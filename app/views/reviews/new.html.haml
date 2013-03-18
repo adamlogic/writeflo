@@ -5,4 +5,4 @@
       = link_to 'start a new writeflo', new_doc_path
 
 .page-content
-  .reviewable-doc-content= simple_format doc.content
+  .reviewable-doc-content= content_to_html doc.content

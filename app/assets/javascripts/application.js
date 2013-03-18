@@ -1,15 +1,36 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
-// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
-//
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+
+$(function() {
+  //TODO: also handle dblclick event
+  //TODO: handle selections across paragraphs
+
+  var $anchor = null;
+
+  $('.reviewable-doc-content').on('mousedown', 'span', function(e) {
+    clearSelection();
+    $anchor = $(this);
+    $anchor.addClass('is-selected');
+  }).on('mouseover', 'span', function(e) {
+    if ($anchor) {
+      clearSelection();
+      var $endPoint = $(this);
+
+      if ($anchor.is($endPoint)) {
+        $anchor.addClass('is-selected');
+      } else if ($anchor.nextAll().is($endPoint)) {
+        $anchor.nextUntil($endPoint).add($anchor).add($endPoint).addClass('is-selected');
+      } else if ($anchor.prevAll().is($endPoint)) {
+        $anchor.prevUntil($endPoint).add($anchor).add($endPoint).addClass('is-selected');
+      }
+    }
+  });
+
+  $(document).on('mouseup', function(e) {
+    $anchor = null;
+  });
+
+  function clearSelection() {
+    $('.reviewable-doc-content').find('.is-selected').removeClass('is-selected');
+  }
+});
