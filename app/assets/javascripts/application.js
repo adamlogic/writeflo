@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.position
 
 $(function() {
   var $anchor, $selection;
@@ -42,6 +43,10 @@ $(function() {
 
   function completeSelection(e) {
     $anchor = null;
+    if ($selection) {
+      $('.edit-actions').show()
+                        .position({my: 'center top', at: 'center bottom', of: $selection.last()});
+    }
   }
 
 });
