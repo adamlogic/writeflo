@@ -26,7 +26,10 @@ $doc-content-padding: 15px
   @extend %doc-content
   +user-select(none)
   overflow: scroll
-  p
-    margin: 0 0 1em
   .is-selected
     background-color: yellow
+  .paragraph-break
+    display: block
+    height: 1em
+    &.is-selected
+      background: none
