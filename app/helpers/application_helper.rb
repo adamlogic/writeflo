@@ -2,7 +2,7 @@ module ApplicationHelper
   def content_to_html(text)
     text.gsub!(/\r\n?/, "\n") # normalize line breaks
 
-    html = text.scan(/\w+|<[^>]*>|\n+|./).map do |word|
+    html = text.scan(/\w+|<[^>]*>|\n{1,2}|./).map do |word|
       content_tag :span, word, word_span_attrs(word)
     end.join
 
