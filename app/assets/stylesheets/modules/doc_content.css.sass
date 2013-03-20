@@ -6,6 +6,10 @@ $doc-content-padding: 15px
 .page-content
   @extend %page-content-area
 
+%doc-content-container
+  max-width: 40em
+  margin: 0 auto
+
 %doc-content
   padding: $doc-content-padding
   height: 500px
@@ -15,6 +19,7 @@ $doc-content-padding: 15px
   font-family: helvetica
 
 .editable-doc-content
+  @extend %doc-content-container
   padding-right: $doc-content-padding * 2 + 2
   textarea
     @extend %doc-content
@@ -23,6 +28,7 @@ $doc-content-padding: 15px
     outline: none
 
 .reviewable-doc-content
+  @extend %doc-content-container
   @extend %doc-content
   +user-select(none)
   overflow: scroll
