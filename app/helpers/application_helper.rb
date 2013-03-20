@@ -7,14 +7,12 @@ module ApplicationHelper
     end.join
 
     html.html_safe
-
-    #TODO: handle single line breaks
-    #TODO: encode html in the content
-    # html.gsub!(/([^\n]\n)(?=[^\n])/, '\1<br />') # 1 newline   -> br
   end
 
   def word_span_attrs(word)
-    if word == "\n\n"
+    if word == "\n"
+      {class: 'line-break'}
+    elsif word == "\n\n"
       {class: 'paragraph-break'}
     end
   end
