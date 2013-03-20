@@ -13,6 +13,11 @@ class DocsController < ApplicationController
   def show
   end
 
+  def update
+    doc.update_attributes!(doc_params)
+    redirect_to [:share, doc]
+  end
+
   private
 
   def doc_params
