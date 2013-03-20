@@ -2,35 +2,46 @@
 //= require jquery_ujs
 
 $(function() {
-  //TODO: also handle dblclick event
-  //TODO: handle selections across paragraphs
+  var $anchor, $selection;
 
-  var $anchor = null;
+  $('.reviewable-doc-content').on('mousedown', 'span', beginSelection)
+                              .on('mouseover', 'span', extendSelection);
+  $(document).on('mouseup', completeSelection);
 
-  $('.reviewable-doc-content').on('mousedown', 'span', function(e) {
+  function beginSelection(e) {
     clearSelection();
-    $anchor = $(this);
-    $anchor.addClass('is-selected');
-  }).on('mouseover', 'span', function(e) {
-    if ($anchor) {
+    $selection = $anchor = $(this);
+    $selection.addClass('is-selected');
+  }
+
+  function extendSelection(e) {
+    if (isMakingSelection()) {
       clearSelection();
       var $endPoint = $(this);
 
       if ($anchor.is($endPoint)) {
-        $anchor.addClass('is-selected');
+        $selection = $anchor;
       } else if ($anchor.nextAll().is($endPoint)) {
-        $anchor.nextUntil($endPoint).add($anchor).add($endPoint).addClass('is-selected');
+        $selection = $anchor.nextUntil($endPoint).add($anchor).add($endPoint);
       } else if ($anchor.prevAll().is($endPoint)) {
-        $anchor.prevUntil($endPoint).add($anchor).add($endPoint).addClass('is-selected');
+        $selection = $anchor.prevUntil($endPoint).add($anchor).add($endPoint);
       }
-    }
-  });
 
-  $(document).on('mouseup', function(e) {
-    $anchor = null;
-  });
+      $selection.addClass('is-selected');
+    }
+  }
+
+  function isMakingSelection() {
+    return $anchor;
+  }
 
   function clearSelection() {
     $('.reviewable-doc-content').find('.is-selected').removeClass('is-selected');
+    $selection = null;
   }
+
+  function completeSelection(e) {
+    $anchor = null;
+  }
+
 });
