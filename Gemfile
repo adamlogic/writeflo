@@ -7,6 +7,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'basic_assumption'
 gem 'strong_parameters'
+gem 'diff-lcs'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -23,4 +24,7 @@ group :development do
   gem 'sextant'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
 end
