@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   assume(:review) { params[:id] ? doc.reviews.find(params[:id]) : doc.new_review(review_params) }
 
   def new
+    render :show
   end
 
   def create
@@ -12,7 +13,6 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    render :new
   end
 
   def update
