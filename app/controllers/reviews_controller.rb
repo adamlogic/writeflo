@@ -15,6 +15,11 @@ class ReviewsController < ApplicationController
     render :new
   end
 
+  def update
+    review.update_attributes!(review_params)
+    redirect_to [doc, review]
+  end
+
   private
 
   def review_params
