@@ -1,6 +1,8 @@
 class Doc < ActiveRecord::Base
   WORD_REGEX = /\w+|<[^>]*>|\n{1,2}|./
 
+  has_many :reviews
+
   before_create :set_permalink
 
   def to_param
@@ -10,6 +12,12 @@ class Doc < ActiveRecord::Base
   def words
     text = content.gsub(/\r\n?/, "\n") # normalize line breaks
     text.scan WORD_REGEX
+  end
+
+  def new_review(params)
+    params ||= {}
+    params.reverse_merge! content: content
+    reviews.new params
   end
 
   private

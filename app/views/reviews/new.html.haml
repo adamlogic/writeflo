@@ -1,12 +1,11 @@
-.page-header
-  .page-header-content
-    .logo writeflo
-    .page-actions
-      = link_to 'start a new writeflo', new_doc_path
+= form_for [doc, review] do |f|
+  .page-header
+    .page-header-content
+      .logo writeflo
+      .page-actions
+        = submit_tag 'save your review'
+        = submit_tag 'preview your edits'
+        = link_to 'start a new writeflo', new_doc_path
 
-.page-content
-  .reviewable-doc-content= words_to_html doc.words
-
-.edit-actions
-  = button_to 'delete'
-  = link_to 'cancel'
+  .page-content
+    .editable-doc-content= f.text_area :content

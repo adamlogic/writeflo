@@ -11,6 +11,7 @@ class DocsController < ApplicationController
   end
 
   def show
+    render :new
   end
 
   def update
