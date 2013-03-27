@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "an author shares a writeflo" do
   scenario "sharing multiple versions" do
     visit '/'
-    fill_in :doc_content, with: 'This is my first writeflo!'
+    fill_in 'doc-content', with: 'This is my first writeflo!'
     click_button 'share your writeflo'
 
     page.should have_content('This URL is for you to share')
@@ -11,7 +11,7 @@ feature "an author shares a writeflo" do
     share_link.should match(/v1$/)
 
     click_link 'keep editing'
-    fill_in :doc_content, with: 'This is my updated writeflo!'
+    fill_in 'doc-content', with: 'This is my updated writeflo!'
     click_button 'share your writeflo'
 
     page.should have_content('This URL is for you to share')
