@@ -5,14 +5,18 @@ class Doc < ActiveRecord::Base
 
   before_create :set_permalink
 
-  delegate :content, to: :latest_version, allow_nil: true
-
   def to_param
     permalink
   end
 
+  def content
+    if version = latest_version || versions.last
+      version.content
+    end
+  end
+
   def content=(initial_content)
-    build_latest_version(content: initial_content)
+    versions.build(content: initial_content)
   end
 
   private
