@@ -12,7 +12,7 @@ class Doc < ActiveRecord::Base
   end
 
   def content=(initial_content)
-    versions.new(content: initial_content)
+    build_latest_version(content: initial_content)
   end
 
   private

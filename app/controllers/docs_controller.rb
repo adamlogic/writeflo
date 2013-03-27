@@ -22,7 +22,11 @@ class DocsController < ApplicationController
   private
 
   def doc_params
-    params.require(:doc).permit(:content) if params[:doc]
+    if params[:doc]
+      params.require(:doc).permit(:content)
+    else
+      { content: 'Start writing.' }
+    end
   end
 
 end
