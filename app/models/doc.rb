@@ -1,17 +1,18 @@
 class Doc < ActiveRecord::Base
 
-  has_many :reviews
+  has_many :versions
+  has_one  :latest_version, class_name: 'Version', order: 'number desc'
 
   before_create :set_permalink
+
+  delegate :content, to: :latest_version, allow_nil: true
 
   def to_param
     permalink
   end
 
-  def new_review(params)
-    params ||= {}
-    params.reverse_merge! content: content
-    reviews.new params
+  def content=(initial_content)
+    versions.new(content: initial_content)
   end
 
   private

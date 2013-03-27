@@ -17,6 +17,13 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
+  gem 'awesome_print'
+end
+
 group :development do
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
@@ -24,7 +31,11 @@ group :development do
   gem 'sextant'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry-rails'
-  gem 'pry-debugger'
-  gem 'pry-stack_explorer'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'factory_girl_rails'
 end

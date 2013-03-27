@@ -1,12 +1,12 @@
 development: &dev
   adapter: postgresql
   encoding: unicode
-  database: leanstartupconf_development
+  database: writeflo_development
   pool: 5
 
 test: &test
   <<: *dev
-  database: leanstartupconf_test
+  database: writeflo_test
 
 production:
   <<: *dev

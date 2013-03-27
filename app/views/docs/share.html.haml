@@ -2,7 +2,7 @@
   .share-url
     .share-url-label This URL is for you to share
     .share-url-info Send it to friends and family for feedback!
-    = text_field_tag :new_review_url, new_review_url(doc, version: 1)
+    = text_field_tag :new_review_url, new_review_url(doc, doc.latest_version.number)
 
   .share-url
     .share-url-label This URL is for you to keep
@@ -12,4 +12,4 @@
     = text_field_tag :doc_url, doc_url(doc)
 
   .modal-dismiss
-    = link_to 'view your writeflo', doc_path(doc)
+    = link_to 'keep editing', doc_path(doc)

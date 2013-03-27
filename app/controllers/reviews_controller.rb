@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
 
   assume(:doc) { Doc.find_by_permalink!(params[:doc_id]) }
-  assume(:review) { params[:id] ? doc.reviews.find(params[:id]) : doc.new_review(review_params) }
-  assume(:review_diff) { ContentDiff.new(review.content, doc.content) }
+  assume(:version) { doc.versions.find_by_number!(params[:version]) }
+  assume(:review) { params[:id] ? version.reviews.find(params[:id]) : version.new_review(review_params) }
+  assume(:review_diff) { ContentDiff.new(review.content, version.content) }
 
   def new
     render :show

@@ -11,22 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321021009) do
+ActiveRecord::Schema.define(:version => 20130323205234) do
 
   create_table "docs", :force => true do |t|
-    t.text     "content"
     t.string   "permalink"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "reviews", :force => true do |t|
-    t.integer  "doc_id"
+    t.integer  "version_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.text     "content"
   end
 
-  add_index "reviews", ["doc_id"], :name => "index_reviews_on_doc_id"
+  add_index "reviews", ["version_id"], :name => "index_reviews_on_version_id"
+
+  create_table "versions", :force => true do |t|
+    t.integer  "doc_id"
+    t.integer  "number"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "versions", ["doc_id"], :name => "index_versions_on_doc_id"
 
 end
