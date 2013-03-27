@@ -124,6 +124,9 @@ GEM
       pry (~> 0.9.10)
     pry-rails (0.2.2)
       pry (>= 0.9.10)
+    pry-remote (0.1.6)
+      pry (~> 0.9)
+      slop (~> 3.0)
     pry-stack_explorer (0.4.9)
       binding_of_caller (>= 0.7)
       pry (~> 0.9.11)
@@ -227,6 +230,7 @@ DEPENDENCIES
   pg
   pry-debugger
   pry-rails
+  pry-remote
   pry-stack_explorer
   quiet_assets
   rack-livereload
