@@ -1,6 +1,6 @@
-.page-actions
+.page-menu
   = link_to 'continue with edits', [doc, review]
   = link_to 'start a new writeflo', new_doc_path
 
 .page-content
-  #doc-content.reviewable-doc-content= render_diff(review_diff)
+  #doc-content.viewable-doc-content= render_diff(review_diff)
