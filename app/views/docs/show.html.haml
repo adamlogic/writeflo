@@ -1,10 +1,7 @@
 = form_for doc do |f|
-  .page-header
-    .page-header-content
-      .logo writeflo
-      .page-actions
-        = submit_tag 'share your writeflo'
-        = link_to 'start a new writeflo', new_doc_path
+  .page-actions
+    = submit_tag 'share your writeflo'
+    = link_to 'start a new writeflo', new_doc_path
 
   .page-content
-    .editable-doc-content= f.text_area :content
+    .editable-doc-content= f.text_area :content, id: 'doc-content'

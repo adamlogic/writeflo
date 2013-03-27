@@ -1,9 +1,6 @@
-.page-header
-  .page-header-content
-    .logo writeflo
-    .page-actions
-      = link_to 'continue with edits', [doc, review]
-      = link_to 'start a new writeflo', new_doc_path
+.page-actions
+  = link_to 'continue with edits', [doc, review]
+  = link_to 'start a new writeflo', new_doc_path
 
 .page-content
-  .reviewable-doc-content= render_diff(review_diff)
+  #doc-content.reviewable-doc-content= render_diff(review_diff)
