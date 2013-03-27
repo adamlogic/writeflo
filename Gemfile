@@ -22,6 +22,7 @@ group :development, :test do
   gem 'pry-debugger'
   gem 'pry-stack_explorer'
   gem 'awesome_print'
+  gem 'quiet_assets'
 end
 
 group :development do
