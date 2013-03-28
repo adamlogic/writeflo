@@ -1,4 +1,5 @@
-= form_for [doc, review] do |f|
+= form_for [version, review] do |f|
+  = hidden_field_tag :version, version.number
   .page-menu
     = submit_tag 'save your review'
     = submit_tag 'preview your edits', name: 'preview'

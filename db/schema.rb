@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323205234) do
+ActiveRecord::Schema.define(:version => 20130328013755) do
 
   create_table "docs", :force => true do |t|
     t.string   "permalink"
@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(:version => 20130323205234) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "permalink"
   end
 
   add_index "versions", ["doc_id"], :name => "index_versions_on_doc_id"
+  add_index "versions", ["permalink"], :name => "index_versions_on_permalink", :unique => true
 
 end

@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
 
-  assume(:doc) { Doc.find_by_permalink!(params[:doc_id]) }
-  assume(:version) { doc.versions.find_by_number!(params[:version]) }
+  assume(:version) { Version.find_by_permalink!(params[:version_id]) }
   assume(:review) { params[:id] ? version.reviews.find(params[:id]) : version.new_review(review_params) }
+  assume(:doc) { version.doc }
   assume(:review_diff) { ContentDiff.new(review.content, version.content) }
 
   def new
@@ -33,9 +33,9 @@ class ReviewsController < ApplicationController
 
   def review_path
     if params[:preview]
-      [:preview, doc, review]
+      [:preview, version, review]
     else
-      [doc, review]
+      [version, review]
     end
   end
 
