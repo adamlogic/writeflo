@@ -4,7 +4,7 @@ Writeflo::Application.routes.draw do
     get :share, on: :member
   end
 
-  resources :versions, only: [] do
+  resources :versions, path: 'share', only: [] do
     resources :reviews do
       get :preview, on: :member
     end

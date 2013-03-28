@@ -24,5 +24,6 @@ feature "a peer reviews a writeflo" do
 
     page.should have_selector('.deleted', text: 'initial')
     page.should have_selector('.added', text: 'updated')
+    current_path.should match(%r{share/.*/reviews/.*/preview})
   end
 end
