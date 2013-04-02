@@ -12,4 +12,6 @@
     = text_field_tag :doc_url, doc_url(doc)
 
   .modal-dismiss
-    = link_to 'keep editing', doc_path(doc)
+    = link_to 'go to your feedback view', doc_path(doc)
+    or
+    = link_to 'keep editing', edit_doc_path(doc)

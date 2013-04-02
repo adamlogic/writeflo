@@ -1,7 +1,12 @@
-= form_for doc do |f|
-  .page-menu
-    = submit_tag 'share your writeflo'
-    = link_to 'start a new writeflo', new_doc_path
+.page-menu-left
+  = link_to 'edit latest version', [:edit, doc]
+  = link_to 'start a new writeflo', new_doc_path
 
-  .page-content
-    .editable-doc-content= f.text_area :content, id: 'doc-content'
+.page-menu-right
+  = link_to '<-', doc_path(doc, position: position - 1)
+  review #{position} of #{version.reviews.count}
+  = link_to '->', doc_path(doc, position: position + 1)
+
+.page-content
+  - diff = ContentDiff.new(review.content, version.content)
+  #doc-content.viewable-doc-content= render_diff(diff)

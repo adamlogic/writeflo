@@ -1,29 +1,48 @@
 @import 'globals/all'
 @import 'bourbon'
 
-.page-menu
+%page-menu
   position: absolute
   top: 15px
-  right: 100%
   width: 150px
   padding: 3px 5px
   border: 1px solid rgba(100,100,100,.45)
-  border-top-left-radius: 5px
-  border-bottom-left-radius: 5px
   font-size: 12px
   background: rgba(100,100,100,.4)
 
+%page-menu-clickable
+  padding: 0
+  border: 1px solid #333
+  border-radius: 3px
+  background: #555
+  color: #eee
+  font-size: 12px
+  text-decoration: none
+  cursor: pointer
+  text-align: center
+  line-height: 20px
+
+.page-menu-left
+  @extend %page-menu
+  right: 100%
+  border-top-left-radius: 5px
+  border-bottom-left-radius: 5px
+
   a, input[type=submit], button
+    @extend %page-menu-clickable
     display: block
-    width: 130px
     margin: 5px auto
-    padding: 0
-    border: 1px solid #333
-    border-radius: 3px
-    background: #555
-    color: #eee
-    font-size: 12px
-    text-decoration: none
-    cursor: pointer
-    text-align: center
-    line-height: 20px
+    width: 130px
+
+.page-menu-right
+  @extend %page-menu
+  left: 100%
+  border-top-right-radius: 5px
+  border-bottom-right-radius: 5px
+  text-align: center
+
+  a, input[type=submit], button
+    @extend %page-menu-clickable
+    +inline-block
+    margin: 5px 2px
+    padding: 0 3px

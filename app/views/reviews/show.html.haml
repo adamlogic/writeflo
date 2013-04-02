@@ -1,6 +1,6 @@
 = form_for [version, review] do |f|
   = hidden_field_tag :version, version.number
-  .page-menu
+  .page-menu-left
     = submit_tag 'save your review'
     = submit_tag 'preview your edits', name: 'preview'
     = link_to 'start a new writeflo', new_doc_path

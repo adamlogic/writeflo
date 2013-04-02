@@ -1,9 +1,12 @@
 class DocsController < ApplicationController
 
-  assume(:doc) { params[:id] ? Doc.find_by_permalink!(params[:id]) : Doc.new(doc_params) }
+  assume(:doc)      { params[:id] ? Doc.find_by_permalink!(params[:id]) : Doc.new(doc_params) }
+  assume(:version)  { doc.latest_version }
+  assume(:review)   { version.reviews.at_position(position) }
+  assume(:position) { params[:position] ? params[:position].to_i : 1 }
 
   def new
-    render :show
+    render :edit
   end
 
   def create
@@ -12,6 +15,10 @@ class DocsController < ApplicationController
   end
 
   def show
+    redirect_to doc if review.nil?
+  end
+
+  def edit
   end
 
   def update
