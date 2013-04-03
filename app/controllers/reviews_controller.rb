@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
 
   def create
     review.save!
-    redirect_to review_path
+    thanks_or_preview
   end
 
   def show
@@ -19,10 +19,13 @@ class ReviewsController < ApplicationController
 
   def update
     review.update_attributes!(review_params)
-    redirect_to review_path
+    thanks_or_preview
   end
 
   def preview
+  end
+
+  def thanks
   end
 
   private
@@ -31,11 +34,11 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:content) if params[:review]
   end
 
-  def review_path
+  def thanks_or_preview
     if params[:preview]
-      [:preview, version, review]
+      redirect_to [:preview, version, review]
     else
-      [version, review]
+      redirect_to thanks_path
     end
   end
 

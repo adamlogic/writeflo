@@ -11,6 +11,7 @@ Writeflo::Application.routes.draw do
   end
 
   get 'share/:version_id' => 'reviews#new', as: :new_review
+  get 'reviews/thanks' => 'reviews#thanks', as: :thanks
 
   root to: 'docs#new'
 

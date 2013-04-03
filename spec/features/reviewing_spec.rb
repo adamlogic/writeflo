@@ -26,4 +26,14 @@ feature "a peer reviews a writeflo" do
     page.should have_selector('.added', text: 'updated')
     current_path.should match(%r{share/.*/reviews/.*/preview})
   end
+
+  scenario "saving a review" do
+    doc = create(:doc, content: 'initial content')
+    visit new_review_path(doc.latest_version)
+
+    fill_in 'doc-content', with: 'updated content'
+    click_button 'save your review'
+
+    page.should have_content('Thanks')
+  end
 end
