@@ -70,5 +70,7 @@ module Writeflo
       g.assets false
       g.helper false
     end
+
+    config.assets.initialize_on_precompile = false
   end
 end
