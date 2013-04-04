@@ -12,6 +12,7 @@ Writeflo::Application.routes.draw do
 
   get 'share/:version_id' => 'reviews#new', as: :new_review
   get 'reviews/thanks' => 'reviews#thanks', as: :thanks
+  get 'ping' => proc { |env| [200, {}, ["Pinged at #{Time.zone.now}"]] }
 
   root to: 'docs#new'
 
