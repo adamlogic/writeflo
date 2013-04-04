@@ -10,6 +10,7 @@ gem 'strong_parameters'
 gem 'diff-lcs'
 gem 'newrelic_rpm'
 gem 'unicorn'
+gem 'bugsnag'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
