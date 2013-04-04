@@ -8,6 +8,7 @@ gem 'haml-rails'
 gem 'basic_assumption'
 gem 'strong_parameters'
 gem 'diff-lcs'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
