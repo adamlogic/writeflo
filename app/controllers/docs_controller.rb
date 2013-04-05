@@ -15,7 +15,7 @@ class DocsController < ApplicationController
   end
 
   def show
-    redirect_to doc if review.nil?
+    redirect_to [:edit, doc] if review.nil?
   end
 
   def edit
