@@ -36,7 +36,11 @@ class ReviewsController < ApplicationController
 
   def thanks_or_preview
     if params[:preview]
-      redirect_to [:preview, version, review]
+      if review.persisted?
+        redirect_to [:preview, version, review]
+      else
+        redirect_to [:new, version, :review]
+      end
     else
       redirect_to thanks_path
     end

@@ -15,11 +15,6 @@ class Review < ActiveRecord::Base
   end
 
   def content_matches_doc?
-    puts '***'
-    puts content
-    puts '---'
-    puts version.content
-    puts '***'
     content == version.content
   end
 

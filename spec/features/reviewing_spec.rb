@@ -38,13 +38,13 @@ feature "a peer reviews a writeflo" do
 
   scenario "previewing and saving a review with no changes" do
     visit new_review_path(doc.latest_version)
-    binding.pry
+    fill_in 'doc-content', with: 'initial content'
 
     expect {
       click_button 'preview your edits'
     }.to_not change { Review.count }
 
-    click_link 'continue editing'
+    fill_in 'doc-content', with: 'initial content'
 
     expect {
       click_button 'save your review'
