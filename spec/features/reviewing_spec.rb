@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 feature "a peer reviews a writeflo" do
+  let(:doc) { create(:doc, content: 'initial content') }
+
   scenario "reviewing a specific version" do
-    doc            = create(:doc, content: 'initial content')
     first_version  = doc.latest_version
     second_version = create(:version, content: 'updated content', doc: doc)
 
@@ -16,7 +17,6 @@ feature "a peer reviews a writeflo" do
   end
 
   scenario "previewing a review" do
-    doc = create(:doc, content: 'initial content')
     visit new_review_path(doc.latest_version)
 
     fill_in 'doc-content', with: 'updated content'
@@ -28,11 +28,27 @@ feature "a peer reviews a writeflo" do
   end
 
   scenario "saving a review" do
-    doc = create(:doc, content: 'initial content')
     visit new_review_path(doc.latest_version)
 
     fill_in 'doc-content', with: 'updated content'
     click_button 'save your review'
+
+    page.should have_content('Thanks')
+  end
+
+  scenario "previewing and saving a review with no changes" do
+    visit new_review_path(doc.latest_version)
+    binding.pry
+
+    expect {
+      click_button 'preview your edits'
+    }.to_not change { Review.count }
+
+    click_link 'continue editing'
+
+    expect {
+      click_button 'save your review'
+    }.to_not change { Review.count }
 
     page.should have_content('Thanks')
   end

@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review.save!
+    review.save! unless review.content_matches_doc?
     thanks_or_preview
   end
 
