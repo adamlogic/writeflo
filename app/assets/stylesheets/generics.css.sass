@@ -1,22 +1,17 @@
-body
-  margin: 0
-  padding: 0
-  background: #ebe8e3
-  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif
+@import 'globals/all'
 
-form.button_to
-  display: inline
-  div
-    display: inline
+html, body
+  height: 100%
 
-p
+body, input, textarea, select
+  +base-line-height
+  font-family: "Avenir", Helvetica Neue, Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  font-size: 16px
+  background: #f5f5f5
+
+p, h1
   margin: 0 0 1em
 
-.page-container
-  position: relative
-  max-width: 40em
-  margin: 0 auto
-
-.page-content
-  position: relative
-  z-index: 10
+a
+  text-decoration: none

@@ -1,6 +1,8 @@
-.page-menu-left
-  = link_to 'continue editing', [version, review]
-  = submit_tag 'save your review'
+= form_for [version, review] do |f|
+  = hidden_field_tag :version, version.number
+  .page-menu
+    = link_to 'continue editing', [version, review], class: 'page-menu-button'
+    = submit_tag 'save your review', class: 'page-menu-button'
 
-.page-content
-  #doc-content.viewable-doc-content= render_diff(review_diff)
+  .page-content
+    #doc-content.viewable-doc-content= render_diff(review_diff)

@@ -1,4 +1,6 @@
 /*
+ *= require normalize
  *= require generics
  *= require_tree ./modules
+ *= require responsive
  */

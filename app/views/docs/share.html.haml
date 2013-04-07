@@ -1,4 +1,11 @@
-.share-modal
+.share
+  %h1 Don't lose this information!!!
+  %p
+    Keep these URLs in a safe place, as there is no way to get them
+    back without #{link_to 'creating an account'}.
+
+  %hr
+
   .share-url
     .share-url-label This URL is for you to share
     .share-url-info Send it to friends and family for feedback!
@@ -8,10 +15,8 @@
     .share-url-label This URL is for you to keep
     .share-url-info
       Come back to this URL to view your feedback.<br>
-      Worried you'll lose your URL? #{link_to "Create an account now"}!
     = text_field_tag :doc_url, doc_url(doc)
 
-  .modal-dismiss
-    = link_to 'go to your feedback view', doc_path(doc)
-    or
-    = link_to 'keep editing', edit_doc_path(doc)
+  = link_to 'go to your feedback view', doc_path(doc)
+  or
+  = link_to 'keep editing', edit_doc_path(doc)

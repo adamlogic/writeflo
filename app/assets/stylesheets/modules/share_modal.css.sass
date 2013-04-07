@@ -1,7 +1,13 @@
 @import 'globals/all'
 
-.share-modal
-  @extend %modal-content
+.share
+  @extend %info-page
+  h1
+    @extend %info-page-header
+  a
+    @extend %info-page-link
+  hr
+    @extend %info-page-divider
 
 .share-url
   line-height: 1.2
@@ -13,6 +19,7 @@
 
 .share-url-label
   font-weight: bold
+  margin-bottom: 1px
 
 .share-url-info
   color: gray

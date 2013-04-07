@@ -1,12 +1,12 @@
 = form_for [version, review] do |f|
   = hidden_field_tag :version, version.number
-  .page-menu-left
-    %p
+  .page-menu
+    .page-menu-caption
       You've been asked to review this writeflo.
       Make your edits inline, and the author will
       see the changes.
-    = submit_tag 'preview your edits', name: 'preview'
-    = submit_tag 'save your review'
+    = submit_tag 'preview your edits', name: 'preview', class: 'page-menu-button'
+    = submit_tag 'save your review', class: 'page-menu-button'
 
   .page-content
     .editable-doc-content= f.text_area :content, id: 'doc-content'
