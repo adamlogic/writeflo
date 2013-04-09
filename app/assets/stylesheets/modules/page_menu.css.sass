@@ -4,16 +4,19 @@
 %page-menu-component
   margin-bottom: .7em
 
-%page-menu-button
+%page-menu-box
   border: 1px solid #d9e3e8
   border-bottom: 1px solid #b0bbc1
   border-left: 1px solid #c9d3d9
   border-right: 1px solid #c9d3d9
+  padding: 5px 7px 4px 9px
+  border-radius: 6px
+
+%page-menu-button
+  @extend %page-menu-box
   text-align: center
   color: #4c5c65
   font-weight: bold
-  padding: 5px 7px 4px 9px
-  border-radius: 6px
   text-shadow: 0 1px 0 #fff
   background: white
   cursor: pointer
@@ -41,6 +44,11 @@
   +base-line-height
   position: absolute
   right: 0
+
+.page-menu-note
+  @extend %page-menu-component
+  @extend %page-menu-box
+  background: #ddd
 
 .page-menu-button
   @extend %page-menu-button
