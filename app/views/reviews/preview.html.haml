@@ -5,4 +5,4 @@
     = submit_tag 'save your review', class: 'page-menu-button'
 
   .page-content
-    #doc-content.viewable-doc-content= render_diff(review_diff)
+    #doc-content.viewable-doc-content= render_diff(version.content, review.content)
