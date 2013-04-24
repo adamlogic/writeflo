@@ -1,10 +1,17 @@
 .page-menu
-  .page-menu-caption
-    = link_to_review '<-', position: position - 1, class: 'page-menu-caption-button-left'
-    Review #{position} of #{version.reviews.count}
-    = link_to_review '->', position: position + 1, class: 'page-menu-caption-button-right'
+  - if review
+    .page-menu-caption
+      = link_to_review '<-', position: position - 1, class: 'page-menu-caption-button-left'
+      Review #{position} of #{version.reviews.count}
+      = link_to_review '->', position: position + 1, class: 'page-menu-caption-button-right'
+  - else
+    .page-menu-note
+      You don't have any reviews yet.
   = link_to 'edit latest version', [:edit, doc], class: 'page-menu-button'
   = link_to 'start a new writeflo', new_doc_path, class: 'page-menu-button'
 
 .page-content
-  %p#doc-content.viewable-doc-content= render_diff(version.content, review.content)
+  - if review
+    %p#doc-content.viewable-doc-content= render_diff(version.content, review.content)
+  - else
+    %p#doc-content.viewable-doc-content= render_diff(version.content, version.content)
