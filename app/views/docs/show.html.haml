@@ -1,8 +1,8 @@
 .page-menu
   .page-menu-caption
-    = link_to '<-', doc_path(doc, position: position - 1), class: 'page-menu-caption-button-left'
+    = link_to_review '<-', position: position - 1, class: 'page-menu-caption-button-left'
     Review #{position} of #{version.reviews.count}
-    = link_to '->', doc_path(doc, position: position + 1), class: 'page-menu-caption-button-right'
+    = link_to_review '->', position: position + 1, class: 'page-menu-caption-button-right'
   = link_to 'edit latest version', [:edit, doc], class: 'page-menu-button'
   = link_to 'start a new writeflo', new_doc_path, class: 'page-menu-button'
 
