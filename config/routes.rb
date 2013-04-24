@@ -10,6 +10,8 @@ Writeflo::Application.routes.draw do
     end
   end
 
+  resources :accounts, only: ['new']
+
   get 'share/:version_id' => 'reviews#new', as: :new_review
   get 'reviews/thanks' => 'reviews#thanks', as: :thanks
   get 'ping' => proc { |env| [200, {}, ["Pinged at #{Time.zone.now}"]] }
