@@ -1,7 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Version.where(permalink: Version::LANDING_PAGE_PERMALINK).all.each do |old_landing_page_version|
+  old_landing_page_version.update_attribute :permalink, SecureRandom.hex(6)
+end
+
+landing_page_content = File.read('doc/landing_page_copy.txt')
+
+doc = Doc.create!(content: landing_page_content)
+doc.latest_version.update_attribute :permalink, Version::LANDING_PAGE_PERMALINK

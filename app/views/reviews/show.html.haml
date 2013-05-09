@@ -1,10 +1,13 @@
 = form_for [version, review] do |f|
   = hidden_field_tag :version, version.number
   .page-menu
-    .page-menu-note
-      You've been asked to review this writeflo.
-      Make your edits inline, and the author will
-      see the changes.
+    - if version.landing_page?
+      = link_to 'start your own writeflo', new_doc_path, class: 'page-menu-button'
+    - else
+      .page-menu-note
+        You've been asked to review this writeflo.
+        Make your edits inline, and the author will
+        see the changes.
     = submit_tag 'preview your edits', name: 'preview', class: 'page-menu-button'
     = submit_tag 'save your review', class: 'page-menu-button'
 

@@ -1,10 +1,15 @@
 class Version < ActiveRecord::Base
+  LANDING_PAGE_PERMALINK = 'landing-page'
 
   belongs_to :doc
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   before_create :set_version_number
   before_create :set_permalink
+
+  def self.landing_page
+    find_by_permalink! LANDING_PAGE_PERMALINK
+  end
 
   def to_param
     permalink
@@ -14,6 +19,10 @@ class Version < ActiveRecord::Base
     params ||= {}
     params.reverse_merge! content: content
     reviews.new params
+  end
+
+  def landing_page?
+    permalink == LANDING_PAGE_PERMALINK
   end
 
   private

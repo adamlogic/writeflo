@@ -16,6 +16,6 @@ Writeflo::Application.routes.draw do
   get 'reviews/thanks' => 'reviews#thanks', as: :thanks
   get 'ping' => proc { |env| [200, {}, ["Pinged at #{Time.zone.now}"]] }
 
-  root to: 'docs#new'
+  root to: 'reviews#new'
 
 end

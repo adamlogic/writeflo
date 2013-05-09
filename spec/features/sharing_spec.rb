@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "an author shares a writeflo" do
   scenario "sharing multiple versions" do
-    visit '/'
+    visit new_doc_path
     fill_in 'doc-content', with: 'This is my first writeflo!'
     click_button 'share your writeflo'
 

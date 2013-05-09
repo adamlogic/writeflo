@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-  assume(:version) { Version.find_by_permalink!(params[:version_id]) }
+  assume(:version) { params[:version_id] ? Version.find_by_permalink!(params[:version_id]) : Version.landing_page }
   assume(:review) { params[:id] ? version.reviews.find(params[:id]) : version.new_review(review_params) }
   assume(:doc) { version.doc }
 
